@@ -3,3 +3,4 @@
 * 3 [products-list] : affichage de la liste des produits
 * 4 [form-navigation] : création de la page form et navigation via routeur Angular
 * 5 [form-save] : ajout des champs, et implémentation du post/put d'un produit
+* 6 [cordova-plugins] : ajout et implémentation des plugins camera et barcode-scanner

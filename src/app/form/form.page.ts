@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-form',
@@ -23,7 +25,9 @@ export class FormPage implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private camera: Camera,
+    private barcodeScanner: BarcodeScanner
   ) {}
 
   ngOnInit() {
@@ -45,5 +49,28 @@ export class FormPage implements OnInit, OnDestroy {
   async saveProduct() {
     await this.productService.save(this.product);
     this.router.navigateByUrl('/home');
+  }
+
+  async takePicture() {
+    const options: CameraOptions = {
+      quality: 80,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    try {
+      const photoData = await this.camera.getPicture(options);
+      this.product.photo = 'data:image/jpeg;base64,' + photoData;
+    } finally {
+    }
+  }
+
+  async scan() {
+    try {
+      const barcodeData = await this.barcodeScanner.scan();
+      this.product.barcode = barcodeData.text;
+    } finally {
+    }
   }
 }

@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppHttpInterceptor } from './interceptors/AppHttpInterceptor';
+import { Camera } from '@ionic-native/camera/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,9 @@ import { AppHttpInterceptor } from './interceptors/AppHttpInterceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
       multi: true
-    }
+    },
+    Camera,
+    BarcodeScanner
   ],
   bootstrap: [AppComponent]
 })
