@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "name": "Bouteille d'eau",
+      "quantity": 3,
+      "photo": null,
+      "barcode": null
+    }
+  ]
+}
