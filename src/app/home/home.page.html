@@ -8,14 +8,14 @@
 
 <ion-content>
   <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button href="form">
+    <ion-fab-button routerLink="/form">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-card
     *ngFor="let product of products$ | async"
-    [href]="'form/' + product.id"
+    [routerLink]="['/form', product.id]"
   >
     <ion-card-header>
       <ion-card-title>{{ product.name }}</ion-card-title>
