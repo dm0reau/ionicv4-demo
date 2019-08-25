@@ -1,12 +1,14 @@
 {
   "products": [
     {
+      "id": 1,
       "name": "Bouteille d'eau",
       "quantity": 3,
       "photo": null,
       "barcode": null
     },
     {
+      "id": 2,
       "name": "Poële à frire",
       "quantity": 2,
       "photo": null,

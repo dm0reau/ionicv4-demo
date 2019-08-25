@@ -1,0 +1,4 @@
+* 1 [init] : présentation du projet
+* 2 [fab] : création d'un bouton ion-fab et couleurs
+* 3 [products-list] : affichage de la liste des produits
+* 4 [form-navigation] : création de la page form et navigation via routeur Angular
