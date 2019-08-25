@@ -16,4 +16,12 @@ export class ProductService {
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>('products');
   }
+
+  async save(product: Product) {
+    if (product.id) {
+      this.http.put(`products/${product.id}`, product).toPromise();
+    } else {
+      this.http.post('products', product).toPromise();
+    }
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -11,12 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormPage implements OnInit, OnDestroy {
   isEditForm = false;
-  product: Product;
+  product: Product = {
+    name: '',
+    quantity: 1,
+    photo: '',
+    barcode: ''
+  };
 
   private product$: Subscription;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService
   ) {}
 
@@ -34,5 +40,10 @@ export class FormPage implements OnInit, OnDestroy {
     if (this.product$) {
       this.product$.unsubscribe();
     }
+  }
+
+  async saveProduct() {
+    await this.productService.save(this.product);
+    this.router.navigateByUrl('/home');
   }
 }

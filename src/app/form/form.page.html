@@ -8,4 +8,51 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <form>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input
+          required
+          type="text"
+          [(ngModel)]="product.name"
+          name="name"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Quantité</ion-label>
+        <ion-input
+          required
+          type="number"
+          name="quantity"
+          [(ngModel)]="product.quantity"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Photo</ion-label>
+        <img *ngIf="product.photo" [src]="product.photo" />
+        <ion-button *ngIf="!product.photo">
+          <ion-icon name="camera"></ion-icon>
+          &nbsp; Prendre en photo
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Code barre</ion-label>
+        <ion-label *ngIf="product.barcode">{{ product.barcode }}</ion-label>
+        <ion-button *ngIf="!product.barcode">
+          <ion-icon name="barcode"></ion-icon>
+          &nbsp; Scanner le code barre
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-button color="secondary" (click)="saveProduct()">
+      <ion-icon name="save"></ion-icon>
+      &nbsp; Enregistrer
+    </ion-button>
+  </form>
+</ion-content>
