@@ -5,6 +5,12 @@
       "quantity": 3,
       "photo": null,
       "barcode": null
+    },
+    {
+      "name": "Poële à frire",
+      "quantity": 2,
+      "photo": null,
+      "barcode": null
     }
   ]
 }
